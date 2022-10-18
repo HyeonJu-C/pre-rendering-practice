@@ -2,7 +2,7 @@
 
 ## 1. 페이지 구성해 보기
 
-## 1-1) [home page]()
+## 1-1) [home page](https://github.com/HyeonJu-C/pre-rendering-practice/blob/main/pages/index.js)
 
 ```
 - isFeatured 프로퍼티가 true로 설정된 이벤트 데이터 필요
@@ -12,7 +12,7 @@
 ❇️ getStaticProps을 이용해 이벤트 데이터를 컴포넌트에 전달
 ```
 
-## 1-2) [all events page]()
+## 1-2) [all events page](https://github.com/HyeonJu-C/pre-rendering-practice/blob/main/pages/events/index.js)
 
 ```
 - home page와 마찬가지로, 현재 구현사항으로 이벤트를 추가하는 작업을 하지 않기 때문에, all events 데이터는 static data라고 생각했다.
@@ -20,7 +20,7 @@
 ❇️ getStaticProps을 이용해 이벤트 데이터를 컴포넌트에 전달
 ```
 
-## 1-3) [event detail page]()
+## 1-3) [event detail page](https://github.com/HyeonJu-C/pre-rendering-practice/blob/main/pages/events/[eventId].js)
 
 ```
 - 각 이벤트의 디테일 데이터도 static data라 판단했다.
@@ -32,7 +32,7 @@
 ❇️ getStaticPaths을 이용해 pre-rendering할 페이지 경로 전달
 ```
 
-## 1-4) [filtered events page]()
+## 1-4) [filtered events page](https://github.com/HyeonJu-C/pre-rendering-practice/blob/main/pages/events/[...slug].js)
 
 ```
 - 이벤트 데이터가 static data 이긴 하지만, 이 page에 접근할 수 있는 경로가 무수히 많았다.
@@ -101,5 +101,7 @@ useEffect(() => {
 ```
 - numYear, numMonth 값은 useRouter로 받아오기 때문에 useEffect의 dependency에 추가해 주지 않으면 값이 null인 상태로 getData 함수를 실행하게 된다.
 
-🤦‍♀️ esLint를 사용하면 이런 에러는 빨리 잡아낼 수 있다.
++) useRouter 훅의 동작 원리 참조
+
++) 🤦‍♀️ esLint를 사용하면 이런 에러는 빨리 잡아낼 수 있다.
 ```
