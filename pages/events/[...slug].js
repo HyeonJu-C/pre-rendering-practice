@@ -22,9 +22,10 @@ function FilteredEventsPage() {
   }, [])
 
   // events 페이지를 거치지 않고, 바로 filterd events 페이지에 접근하면 filterData = undefined 임
-  const filterData = router.query.slug
-  const filteredYear = filterData[0]
-  const filteredMonth = filterData[1]
+  // => useRouter의 동작 원리에 의한 에러였음
+  const filterData = router?.query?.slug
+  const filteredYear = filterData?.[0]
+  const filteredMonth = filterData?.[1]
 
   const numYear = +filteredYear
   const numMonth = +filteredMonth
