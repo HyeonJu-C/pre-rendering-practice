@@ -8,18 +8,8 @@ import ErrorAlert from '../../components/ui/error-alert'
 
 function FilteredEventsPage() {
   const router = useRouter()
-  const [filteredEvents, setFilteredEvents] = useState()
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await getFilteredEvents({
-        year: numYear,
-        month: numMonth,
-      })
-      setFilteredEvents(data)
-    }
-    getData()
-  }, [])
+  const [filteredEvents, setFilteredEvents] = useState(null)
+  const [isLoading, setIsLoading] = useState(null)
 
   // events 페이지를 거치지 않고, 바로 filterd events 페이지에 접근하면 filterData = undefined 임
   // => useRouter의 동작 원리에 의한 에러였음
@@ -29,6 +19,24 @@ function FilteredEventsPage() {
 
   const numYear = +filteredYear
   const numMonth = +filteredMonth
+
+  useEffect(() => {
+    const getData = async () => {
+      return await getFilteredEvents({
+        year: numYear,
+        month: numMonth,
+      })
+    }
+
+    setIsLoading(true)
+    getData() //
+      .then(setFilteredEvents)
+      .finally(() => setIsLoading(false))
+  }, [numYear, numMonth])
+
+  if (!filterData || isLoading) {
+    return <p className="center">loading...</p>
+  }
 
   if (
     isNaN(numYear) ||
@@ -51,10 +59,6 @@ function FilteredEventsPage() {
   }
 
   if (!filteredEvents) {
-    return <p className="center">loading...</p>
-  }
-
-  if (filteredEvents?.length === 0) {
     return (
       <Fragment>
         <ErrorAlert>
