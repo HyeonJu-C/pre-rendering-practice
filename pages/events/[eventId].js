@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { getAllEvents, getEventById } from '../../dummy-data'
+import { getAllEvents, getEventById } from '../../helpers/events-api'
 import EventSummary from '../../components/event-detail/event-summary'
 import EventLogistics from '../../components/event-detail/event-logistics'
 import EventContent from '../../components/event-detail/event-content'

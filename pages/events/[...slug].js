@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getFilteredEvents } from '../../dummy-data'
+import { getFilteredEvents } from '../../helpers/events-api'
 import EventList from '../../components/events/event-list'
 import ResultsTitle from '../../components/events/results-title'
 import Button from '../../components/ui/button'
@@ -77,3 +77,46 @@ function FilteredEventsPage() {
 }
 
 export default FilteredEventsPage
+
+/*
+export async function getStaticProps(context) {
+  const { params } = context
+  const filterData = params.slug
+  const filteredYear = filterData[0]
+  const filteredMonth = filterData[1]
+  const numYear = +filteredYear
+  const numMonth = +filteredMonth
+
+  const filteredEvents = await getFilteredEvents({
+    year: numYear,
+    month: numMonth,
+  })
+
+  return {
+    props: {
+      filteredEvents,
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  let paths = [
+    ...months.map((month) => ({
+      params: {
+        slug: `2021/${month}`,
+      },
+    })),
+    ...months.map((month) => ({
+      params: {
+        slug: `2022/${month}`,
+      },
+    })),
+  ]
+
+  return {
+    paths,
+    fallback: 'blocking',
+  }
+}
+*/
